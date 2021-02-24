@@ -12,9 +12,8 @@ output: html_document
 
 # Automated Script: 'run_analysis.R'
 All of this data reduction is automated in the script "run_analysis.R".  To execute, do the following:<br/>
-1.  update global variable "downloadFolder" to point to a valid folder on your PC.<br/>
-2.  import script: source("run_analysis.R")<br/>
-3.  run script: main()<br/>
+1.  import script: source("run_analysis.R")<br/>
+2.  run script: main()<br/>
 
 # Resulting global objects:
 **mergedData** = merged and reduced data set of 10299 observations (rows) and 81 variables (columns)<br/>
