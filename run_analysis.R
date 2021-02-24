@@ -7,15 +7,15 @@ mergedData <- data.frame()  # merged data in global space
 url <- "https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip"
 
 # download folder for zip file
-downloadFolder <- "C:\\Users\\cjkro\\Downloads\\"
-
-# extraction folder for zip file contents
-zipFolder <- paste0(downloadFolder, "tempfile")
+downloadFolder <- ".\\"  # working directory
 
 # data folder within zip file
 # if zip structure changes this may need to be updated.
-dataFolder <- paste0(zipFolder, "\\UCI HAR Dataset\\")
+dataFolder <- paste0(downloadFolder, "UCI HAR Dataset\\")
 
+# final output file for tidy data set grading
+outputFile <- "tidyData.txt"
+    
 downLoadFile <- function (url) {
     # Download zip file from URL to local drive.
     tempFile <- paste0(downloadFolder, "tempfile.zip")
@@ -28,9 +28,13 @@ downLoadFile <- function (url) {
 extractZipFile <- function(tempFile) {
     # extract zip file
     # tempFile = zip filename (full path)
-    print(paste0("unzipping file: ", tempFile, " to: ", zipFolder))
+    print(paste0("unzipping file: ", tempFile, " to: ", downloadFolder))
     library(utils)
-    unzip(zipfile = tempFile, exdir=zipFolder, overwrite=TRUE)
+    suppressWarnings(unzip(zipfile = tempFile, overwrite=FALSE))
+    # if data files already exist in folder then line above will generate 28
+    # warnings. I have overwrite set to FALSE in case a different data set is
+    # being used for grading.
+    
     print("unzipping complete")
 }
 
@@ -157,4 +161,6 @@ main <- function() {
     print("merged/reduced data is stored in global object 'mergedData'")
     print("summarized data is stored in global object 'tidyData'")
     tidyData  # return tidyData object
+    print(paste("saving tidyData to", outputFile))
+    write.table(tidyData, file=outputFile, row.name = FALSE)
 }

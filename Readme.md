@@ -19,3 +19,7 @@ All of this data reduction is automated in the script "run_analysis.R".  To exec
 # Resulting global objects:
 **mergedData** = merged and reduced data set of 10299 observations (rows) and 81 variables (columns)<br/>
 **tidyData** = summarized data with 40 observations (rows) and 81 variables.  Each row is a group mean by subject and activity.<br/>
+
+
+# Resulting data file:
+**tidyData.txt** is the summarized data file, it will be in your working directory.<br/>
