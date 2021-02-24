@@ -1,0 +1,31 @@
+---
+title: "GettingAndCleaningData final project"
+author: "Christopher Krolak"
+date: "2/24/2021"
+output: html_document
+---
+
+# High level process flow:
+1.  download zip file from URL<br/>
+2.  extract zip file to temp folder<br/>
+3.  build the test data set:<br/>
+     1.  read "X_test.txt" into data frame<br/>
+     2.  use "features.txt" for column names<br/>
+     3.  decode activity index from "Y_test.txt" with data from "activity_labels.txt", prepend this as the first data column.<br/>
+4.  build the training data set:<br/>
+     1.  read "X_train.txt" into data frame<br/>
+     2.  use "features.txt" for column names<br/>
+     3.  decode activity index from "Y_train.txt" with data from "activity_labels.txt", prepend this as the first data column.<br/>
+5.  Merge the test and traiing data sets<br/>
+6.  subset the merged data to included 2 attribute columns (subject, activity) and then only data columns with "mean" or "std" in the column name.  This is the mergedData set.<br/>
+7.  create a new tidyData set with column means for all numberic columns.  This is the "tidyData" set.<br/>
+
+# Automated Script: 'run_analysis.R'
+All of this data reduction is automated in the script "run_analysis.R".  To execute, do the following:<br/>
+1.  update global variable "downloadFolder" to point to a valid folder on your PC.<br/>
+2.  import script: source("run_analysis.R")<br/>
+3.  run script: main()<br/>
+
+# Resulting global objects:
+**mergedData** = merged and reduced data set of 10299 observations (rows) and 81 variables (columns)<br/>
+**tidyData** = summarized data with 40 observations (rows) and 81 variables.  Each row is a group mean by subject and activity.<br/>
