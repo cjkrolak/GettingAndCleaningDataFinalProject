@@ -2,7 +2,9 @@
 title: "GettingAndCleaningData final project"
 author: "Christopher Krolak"
 date: "2/24/2021"
-output: html_document
+output:
+  pdf_document: default
+  html_document: default
 ---
 
 # High level process flow:
